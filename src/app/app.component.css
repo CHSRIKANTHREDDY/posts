@@ -1,0 +1,27 @@
+.spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+  .content{
+    margin-top: 100px;
+    width: 100%;
+    }
+    .content .link{
+        margin-left: 10px;
+    }
+  

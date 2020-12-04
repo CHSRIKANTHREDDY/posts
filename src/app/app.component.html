@@ -1,0 +1,73 @@
+<!-- Toolbar -->
+<div>
+  <div class="toolbar" role="banner">
+    <span>posts List</span>
+    <div class="spacer"></div>
+    <div *ngIf="!commonService.userDetails.name">
+      <button data-toggle="modal" data-target="#login" class="btn btn-success">login</button>
+      <app-signup></app-signup>
+    </div>
+    <div *ngIf="commonService.userDetails.name">
+      <button data-toggle="modal" data-target="#add-post" class="btn btn-success">Add Post</button>
+      <button class="btn btn-success">Log Out</button>
+    </div>
+  </div>
+  <div class="content">
+    <app-post></app-post>
+  </div>
+
+</div>
+
+<div class="modal fade" #login id="login" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" name="email" [(ngModel)]= "email" id="exampleInputEmail1" placeholder="Enter email">
+            <span *ngIf="loginError.email">{{loginError.email}}</span>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" name="password"  [(ngModel)]= "password" id="exampleInputPassword1" placeholder="Password">
+            <span *ngIf="loginError.password">{{loginError.password}}</span>
+          </div>
+          <button (click)="loginSubmit()" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" #addPost id="add-post" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Content</label>
+            <textarea style="margin: 0px 4px 0px 0px; width: 563px; height: 158px;" name="post"  [(ngModel)]= "post" row="10" class="form-control" id="username" placeholder="Enter email">
+            </textarea>
+            <span *ngIf="addPostError.post">{{addPostError.post}}</span>
+          </div>
+          <button (click)="addPostSubmit()" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

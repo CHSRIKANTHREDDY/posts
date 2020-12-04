@@ -1,0 +1,42 @@
+<div>
+
+</div>
+<div id="">
+  <div *ngFor="let post of this.commonService.userDetails.postLists let i= index" class="post">
+    <div class="header">
+        <button class="btn btn-block" style="text-align: left">
+            <div class="row">
+                <div class="col-md-10">
+                    {{post?.post}}
+                </div>
+                <div class="col-md-2">
+                    {{post?.userId.name}}
+                </div>
+            </div>
+        </button>
+        <div class="">
+            comments
+            <div *ngFor="let comments of post.commentId let i= index" class="comments">
+            
+              <div class="col-md-10">
+                {{ comments?.comment}}
+            </div>
+            <div class="col-md-2">
+                {{ comments?.userId.name}}
+                <div *ngIf="commonService.userDetails.name">
+                    <button (click)="deleteComments(comments._id,i)">delete</button>
+                </div>
+            </div>
+            </div>
+            <div *ngIf="commonService.userDetails.name">
+                <textarea (change)="commenttext($event.target.value)" style="width: 100%;">
+    
+                </textarea>
+                <button (click)="commentsSubmit(post,i)">submit</button>
+            </div>
+           
+        </div>
+    </div>
+  </div>
+</div>
+
